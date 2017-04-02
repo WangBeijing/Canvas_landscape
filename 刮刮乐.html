@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>刮刮乐</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+	<style type="text/css">
+		.bg {
+			width: 600px;
+			height: 600px;
+			background-image: url(img/guaguaka_bg.png);
+			/*margin: 0 auto;*/
+			position: relative;
+		}
+		
+		#canvas {
+			position: absolute;
+			top: 200px;
+			left: 150px;
+		}
+		.gaj{
+			position: absolute;
+			top: 200px;
+			left: 150px;
+			width: 549px;
+			height: 215px;
+			background: url(img/gua.png) no-repeat;
+		}
+		span{
+			text-align: center;
+			padding-left: 66px;
+			height: 150px;
+			line-height: 150px;
+		}
+	</style>
+
+	<body>
+		<div class="bg">
+			<div class="gaj">
+				<span>恭喜中奖，萌妹一个</span>
+				
+			</div>
+			<canvas id="canvas" width="300px" height="150px"></canvas>
+		</div>
+
+		<script type="text/javascript">
+			//canvas对象
+			var oCanvas = document.getElementById("canvas");
+			var context = oCanvas.getContext("2d");
+
+			context.fillStyle = "#FAEBD7"; //覆盖层颜色
+			context.fillRect(0, 0, 300, 150); //覆盖区域
+
+			oCanvas.onmousemove = function() {
+				//鼠标移动的时侯刮的过程动画
+				var x = event.clientX - this.offsetLeft - 8;
+				var y = event.clientY - this.offsetTop - 8;
+				console.log(x, y)
+					//				context.fillStyle = "#1122FF";
+					//				context.fillStyle = "transparent";
+				context.fillRect(x, y, 20, 20);
+				context.clearRect(x, y, 20, 20)
+			}
+		</script>
+
+	</body>
+
+</html>
